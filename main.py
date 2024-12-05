@@ -144,10 +144,9 @@ def cipher_selection_window():
     global screen
     screen2 = Toplevel(screen)
     screen2.title("Select Cipher")
-    screen2.geometry("300x250")
-    screen2.config(bg="#f0f0f0")
+    screen2.geometry("300x200")
     
-    Label(screen2, text="Select a Cipher:", font=("Arial", 14), bg="#f0f0f0", fg="#333").pack(pady=10)
+    Label(screen2, text="Select a Cipher:", font=("Arial", 14), bg="#f0f0f0").pack(pady=10)
 
     # Buttons to select cipher
     Button(screen2, text="Caesar", font=("Arial", 12), command=lambda: cipher_action_window("Caesar")).pack(pady=5)
@@ -162,13 +161,12 @@ def cipher_action_window(selected_cipher):
     global screen
     screen2 = Toplevel(screen)
     screen2.title(f"{selected_cipher} Cipher Action")
-    screen2.geometry("300x250")
-    screen2.config(bg="#f0f0f0")
+    screen2.geometry("300x200")
     
-    Label(screen2, text=f"Select Action for {selected_cipher} Cipher:", font=("Arial", 14), bg="#f0f0f0", fg="#333").pack(pady=10)
+    Label(screen2, text=f"Select Action for {selected_cipher} Cipher:", font=("Arial", 14), bg="#f0f0f0").pack(pady=10)
 
-    Button(screen2, text="Encrypt", font=("Arial", 12), bg="#4CAF50", fg="white", command=lambda: process_action("encrypt", selected_cipher)).pack(pady=10, ipadx=10, ipady=5)
-    Button(screen2, text="Decrypt", font=("Arial", 12), bg="#F44336", fg="white", command=lambda: process_action("decrypt", selected_cipher)).pack(pady=10, ipadx=10, ipady=5)
+    Button(screen2, text="Encrypt", font=("Arial", 12), command=lambda: process_action("encrypt", selected_cipher)).pack(pady=5)
+    Button(screen2, text="Decrypt", font=("Arial", 12), command=lambda: process_action("decrypt", selected_cipher)).pack(pady=5)
 
 # Main window to enter text and choose cipher
 def main_scr():
@@ -182,19 +180,19 @@ def main_scr():
     text_frame.place(x=20, y=20, width=460, height=150)
 
     Label(
-        text_frame,
-        text="Enter your message:",
-        font=("Arial", 14),
-        bg="white",
-        fg="black"
+        text_frame, 
+        text="Enter text to encrypt or decrypt:", 
+        fg="black", 
+        bg="white", 
+        font=("Calibri", 15)
     ).pack(anchor="w", padx=10, pady=5)
 
     text1 = Text(
         text_frame,
-        font=("Roboto", 12),
-        bg="white",
-        relief=GROOVE,
-        wrap=WORD,
+        font=("Roboto", 12), 
+        bg="white", 
+        relief=GROOVE, 
+        wrap=WORD, 
         bd=1
     )
     text1.pack(padx=10, pady=5, fill="both", expand=True)
@@ -203,27 +201,27 @@ def main_scr():
     key_frame.place(x=20, y=200, width=460, height=100)
 
     Label(
-        key_frame,
-        text="Enter secret key:",
-        fg="black",
-        bg="#e0e0e0",
+        key_frame, 
+        text="Enter secret key:", 
+        fg="black", 
+        bg="#e0e0e0", 
         font=("Calibri", 15)
     ).pack(anchor="w", padx=10, pady=5)
 
     code = StringVar()
     Entry(
-        key_frame,
-        textvariable=code,
-        width=22,
-        bd=1,
+        key_frame, 
+        textvariable=code, 
+        width=22, 
+        bd=1, 
         font=("Arial", 14)
     ).pack(padx=10, pady=5)
 
     Button(
-        screen,
-        text="Choose Cipher",
-        bg="#4CAF50",
-        fg="white",
+        screen, 
+        text="Choose Cipher", 
+        bg="#4CAF50", 
+        fg="white", 
         font=("Arial", 14),
         command=cipher_selection_window
     ).place(x=180, y=350, width=140, height=40)
@@ -241,3 +239,4 @@ def main_scr():
 
 if __name__ == "__main__":
     main_scr()
+    
